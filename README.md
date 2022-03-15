@@ -9,5 +9,6 @@ Tema aleasa pentru proiectul nostru este o aplicatie de android care are ca util
 
 Tehnologii folosite: python - framework Kivy.
 
- User Stories: https://trello.com/b/KaT9r3rW/user-stories
+ User Stories: https://trello.com/b/KaT9r3rW/user-stories 
+ 
  Backlogs: https://trello.com/b/gWEmhbgM/backlogs
