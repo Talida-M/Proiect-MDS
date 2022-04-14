@@ -1,0 +1,431 @@
+windowManager:
+    LoginUI:
+    LogdataUI:
+    RegisterUI:
+    Forum:
+
+<Forum>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "15dp"
+        Image:
+            source: "logo1.png"
+        Label:
+            text: "Forum"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+
+            font_size: "20dp"
+            size_hint: None, None
+            width: "250dp"
+            height: "50dp"
+            font_size: "30dp"
+            pos_hint: {"center_x": 0.5}
+            color: 7/255, 113/255, 135/255
+            
+            background_color: (158/255, 206/255, 154/255, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                text: "Home"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_home_click()
+            Button:
+                text: "Log In"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_signout_click()
+            Button:
+                text: "Forum"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_forum_click()
+            Button:
+                text: "My Profile"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_myprofile_click()
+        
+        TextInput:
+            hint_text: "Orasul tau..."
+            id: oras
+            multiline: False
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+            background_color: (228/255, 197/255, 175/255, 1)
+            color: (113 / 255, 165 / 255, 127 / 255, 1)
+        
+        TextInput:
+            hint_text: "Mesajul tau..."
+            id: recenzie
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+            background_color: (228/255, 197/255, 175/255, 1)
+            color: (113 / 255, 165 / 255, 127 / 255, 1)
+        
+        Button:
+            text: "Posteaza!"
+            size_hint: None, None
+            width: "150dp"
+            height: "30dp"
+            pos_hint: {"center_x": 0.5}
+            background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+            on_press: root.afisare_recenzie(recenzie.text, oras.text, recenzii_afisate)
+        
+        Label:
+            text: ""
+            id: recenzii_afisate
+            color: (113 / 255, 165 / 255, 127 / 255, 1)
+        
+        Widget:
+
+<LoginUI>:
+    canvas.before:
+        Rectangle:
+            source:'logo.png'
+            size: root.width, root.height
+            pos: self.pos
+        
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "15dp"
+        padding: [50, 50, 50, 50]
+
+        Image:
+            source: "travel_app/logo1.png"
+            # size_hint: None, None
+            # width: "50dp"
+            # height: "50dp"
+            pos_hint: {"center_x": 0.5}
+
+            # background_color: (1, 0, 0, 1)
+            # canvas.before:
+            #     Color:
+            #         rgba: self.background_color
+            #     Rectangle:
+            #         size: self.size
+            #         pos: self.pos
+
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                text: "Home"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_home_click()
+            Button:
+                text: "Log In"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_signout_click()
+            Button:
+                text: "Forum"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_forum_click()
+            Button:
+                text: "My Profile"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_myprofile_click()
+
+        Label:
+            text: "Log In"
+
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+
+            font_size: "20dp"
+            size_hint: None, None
+            width: "250dp"
+            height: "50dp"
+            font_size: "30dp"
+            pos_hint: {"center_x": 0.5}
+            color: 7/255, 113/255, 135/255
+            
+            background_color: (158/255, 206/255, 154/255, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+        TextInput:
+            hint_text: "E-mail"
+            id: email
+            multiline: False
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+            
+        TextInput:
+            hint_text: "Password"
+            id: pwd
+            multiline: False
+            password: True
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+            
+        Button:
+            text: "Log In"
+            size_hint: None, None
+            width: "150dp"
+            height: "30dp"
+            pos_hint: {"center_x": 0.5}
+            on_press: root.on_login_click()
+            background_color: (158/255, 206/255, 154/255, 1)
+        
+        Button:
+            text: "buton"
+            size_hint: None, None
+            width: "150dp"
+            height: "30dp"
+            pos_hint: {"center_x": 0.5}
+            on_press: root.go_to_menu()
+        
+        # Label:
+        #     text: "Not an user yet?"
+        #     size_hint: None, None
+        #     width: "150dp"
+        #     height: "30dp"
+        #     pos_hint: {"center_x": 0.5}
+        #     # height: "30dp"
+        #     # size_hint: 1, None
+                    
+        #     # pos_hint: {"center_y": 0.75}
+
+        #     background_color: (1, 0, 0, 1)
+        #     canvas.before:
+        #         Color:
+        #             rgba: self.background_color
+        #         Rectangle:
+        #             size: self.size
+        #             pos: self.pos
+        
+        # Button:
+        #     text: "Register"
+        #     size_hint: None, None
+        #     width: "150dp"
+        #     height: "30dp"
+        #     pos_hint: {"center_x": 0.5}
+        #     on_press: root.go_to_register()
+        #     background_color: (158/255, 206/255, 154/255, 1)
+        
+        # Widget:
+            
+        BoxLayout:
+            orientation: "vertical"
+            spacing: "2dp"
+        
+            Label:
+                text: "Not an user yet?"
+
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+
+                size_hint: None, None
+                width: "250dp"
+                height: "25dp"
+                pos_hint: {"center_x": 0.5}
+                background_color: (7/255, 113/255, 135/255, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            Button:
+                text: "Register"
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                size_hint: None, None
+                width: "250dp"
+                height: "25dp"
+                pos_hint: {"center_x": 0.5}
+                on_press: root.go_to_register()
+                background_color: (158/255, 206/255, 154/255, 1)
+        
+        Widget:
+    
+<LogdataUI>:
+    BoxLayout:
+        # size_hint_x: None
+        orientation: "vertical"
+        padding: [100, 100, 100, 100]
+        spacing: "15dp"
+
+        Label:
+            text: "You have successfully logged in!"
+
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+
+            font_size: 35
+            size_hint: None, None
+            width: "400dp"
+            height: "50dp"
+            pos_hint: {"center_x": 0.5}
+            background_color: (7/255, 113/255, 135/255, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+        Button:
+            text: "Sign out"
+            size_hint: None, None
+            width: "200dp"
+            height: "50dp"
+            pos_hint: {"center_x": 0.5}
+            on_press: root.on_signout_click()
+            background_color: (158/255, 206/255, 154/255, 1)
+        Widget:
+            
+<RegisterUI>:
+    username: username
+    email: email
+    pwd: pwd
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "15dp"
+        padding: [50, 50, 50, 50]
+
+        Image:
+            source: "travel_app/domy.png"
+            size_hint: None, None
+            width: "50dp"
+            height: "50dp"
+            pos_hint: {"center_x": 0.5}
+        
+        Label:
+            text: "Create a new account"
+
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+
+            font_size: "20dp"
+            size_hint: None, None
+            width: "300dp"
+            height: "50dp"
+            font_size: "30dp"
+            pos_hint: {"center_x": 0.5}
+            
+            background_color: (7/255, 113/255, 135/255, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+        TextInput:
+            hint_text: "Username"
+            id: username
+            multiline: False
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+        
+        TextInput:
+            hint_text: "E-mail"
+            id: email
+            multiline: False
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+            
+        TextInput:
+            hint_text: "Password"
+            id: pwd
+            multiline: False
+            password: True
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+        
+        Button:
+            text: "Submit"
+            size_hint: None, None
+            width: "150dp"
+            height: "30dp"
+            pos_hint: {"center_x": 0.5}
+            on_press: root.on_register_click()
+            background_color: (158/255, 206/255, 154/255, 1)
+
+        Widget:
+        
+
+
+
+
+    # cols: 1
+    # spacing: "30dp"
+    # # padding: "60dp", "60dp"
+
+    # Label:
+    #     text: "My Travel app"
+        
+    #     width: "300dp"
+    #     size_hint: None, 0.25
+    #     pos: "500dp", "25dp"
+        
+    #     background_color: (1, 0, 0, 1)
+        
+    #     canvas.before:
+    #         Color:
+    #             rgba: self.background_color
+    #         Rectangle:
+    #             size: self.size
+    #             pos: self.pos
+
+    # GridLayout:
+    #     cols: 2
+    #     Label:
+    #         text: "Email: "
+    #     TextInput:
+    #     Label:
+    #         text: "Password: "
+    #     TextInput:
+    
+    # Button:
+    #     text: "Log In"
+    # Button:
+    #     text: "Don't have an account? Sign up"
+
+        
