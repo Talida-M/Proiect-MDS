@@ -25,12 +25,11 @@ from kivy.uix.layout import Layout
 from kivy.properties import NumericProperty, ReferenceListProperty, OptionProperty, \
                             BoundedNumericProperty, VariableListProperty, AliasProperty
 from math import sin, cos, pi, radians
-import sys
 
 __all__ = ('CircularLayout')
 
 try:
-    range(1, 2)
+    xrange(1, 2)
 except NameError:
     def xrange(first, second, third=None):
         if third:

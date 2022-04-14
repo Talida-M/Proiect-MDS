@@ -8,8 +8,6 @@ from kivy.properties import NumericProperty, ListProperty, OptionProperty, \
     StringProperty
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.recycleview import RecycleView
-
 import kivymd.material_resources as m_res
 from kivymd.theming import ThemableBehavior
 
@@ -52,8 +50,8 @@ class MDMenuItem(ButtonBehavior, BoxLayout):
     text = StringProperty()
 
 
-class MDMenu(RecycleView):
-    width_mult = NumericProperty(1)
+# class MDMenu(RecycleView):
+#     width_mult = NumericProperty(1)
 
 
 class MDDropdownMenu(ThemableBehavior, BoxLayout):

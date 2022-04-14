@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from kivy.lang import Builder
-from kivy.properties import StringProperty, ObjectProperty, ListProperty, Logger
+from kivy.properties import StringProperty, ObjectProperty, ListProperty
 from kivy.metrics import dp
 from kivy.uix.modalview import ModalView
 from kivy.animation import Animation
 from kivy.uix.popup import PopupException
-
+from kivy.logger import Logger
 from kivymd.theming import ThemableBehavior
 from kivymd.elevationbehavior import ElevationBehavior
 from kivymd.button import MDFlatButton
