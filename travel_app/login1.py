@@ -19,8 +19,8 @@ from kivy.uix.button import Button
 
 # nav bar
 
-# Window.size = (350, 600)
-Window.size = (300,500)
+Window.size = (350, 600)
+# Window.size = (300, 500)
 
 # sectiune cu email, password, buton de "login" si buton de "register"
 class LoginUI(Screen):
@@ -28,8 +28,11 @@ class LoginUI(Screen):
     email = ObjectProperty(None)
     pwd = ObjectProperty(None)
     def on_login_click(self):
-        # verificam daca emai-ul exista in baza de date
-        if self.email.text not in users['Email'].unique():
+        # verificam daca email-ul exista in baza de date si daca avem o combinatie valida
+        if self.email.text == "" or self.pwd.text == "":
+            popup = Popup(title='Log In Error', content=Label(text='Invalid combination!'), size_hint=(None, None), size=(400, 400))
+            popup.open()
+        elif self.email.text not in users['Email'].unique():
             popup = Popup(title='Log In Error', content=Label(text='No user found!'), size_hint=(None, None), size=(400, 400))
             popup.open()
         else:
@@ -49,21 +52,26 @@ class LoginUI(Screen):
 
 class Forum(Screen):
     def afisare_recenzie(self, rec, oras, label_afis_rec):
-        rec_oras = pd.DataFrame([[oras, rec]], columns = ['Oras', 'Recenzie'])
-        rec_oras.to_csv('travel_app/rec_orase.csv', mode = 'a', header = False, index = False)
+        if oras != "" and rec != "":
+            rec_oras = pd.DataFrame([[oras, rec]], columns = ['Oras', 'Recenzie'])
+            rec_oras.to_csv('travel_app/rec_orase.csv', mode = 'a', header = False, index = False)
 
-        orase_recenzii = pd.read_csv('travel_app/rec_orase.csv')
-        orase = orase_recenzii['Oras']
-        recenzii = orase_recenzii['Recenzie']
+            orase_recenzii = pd.read_csv('travel_app/rec_orase.csv')
+            orase = orase_recenzii['Oras']
+            recenzii = orase_recenzii['Recenzie']
+            
+            # afisare 
+            afisare_recenzii = ""
+            for i in range(len(recenzii)):
+                utilizator = "Anonim"
+                recenzie = "\nRecenzie pentru orasul " + orase[i] + "\n de la utilizatorul " + utilizator + "\n" + recenzii[i] + "\n"
+
+                afisare_recenzii += recenzie
+                label_afis_rec.text = afisare_recenzii
         
-        # afisare 
-        afisare_recenzii = ""
-        for i in range(len(recenzii)):
-            utilizator = "Anonim"
-            recenzie = "\nRecenzie pentru orasul " + orase[i] + "\n de la utilizatorul " + utilizator+"\n" +recenzii[i]+"\n"
-
-            afisare_recenzii += recenzie
-            label_afis_rec.text = afisare_recenzii
+        else:
+            popup = Popup(title='Review Error', content=Label(text='No review submitted'), size_hint=(None, None), size=(400, 400))
+            popup.open()
     
     def on_signout_click(self):
         sm.current = 'login'
@@ -108,13 +116,20 @@ class RegisterUI(Screen):
             # pentru campuri goale
             popup = Popup(title='Sign Up Error', content=Label(text='Invalid values'), size_hint=(None, None), size=(400, 400))
             popup.open()
+    
+    def on_signout_click(self):
+        sm.current = 'login'
+    
+    def on_forum_click(self):
+        popup = Popup(title='Not an user', content=Label(text='Please log in to access the forum!'), size_hint=(None, None), size=(500, 500))
+        popup.open()
 
 kv = Builder.load_file('travel_app/login1.kv')
 sm = windowManager()
 
 # stocam userii
 users = pd.read_csv('travel_app/login.csv')
-print(users.keys())
+# print(users.keys())
   
 # adaugam ecranele
 sm.add_widget(LoginUI(name='login'))
