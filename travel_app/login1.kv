@@ -802,14 +802,31 @@ windowManager:
             outline_color: (1,1,1)
             outline_width: 10
 
-        Button:
-            text: "Afla Acum!"
-            size_hint: None, None
-            width: "150dp"
-            height: "30dp"
-            pos_hint: {"center_x": 0.5}
-            on_press: root.on_click()
-            background_color: (158/255, 206/255, 154/255, 1)
+        StackLayout:
+            Button:
+                id:b
+                size_hint: None, None
+                width: "80dp"
+                height: "30dp"
+                on_press: root.on_b_click()
+                opacity: 0.7
+                background_color: (7/255, 113/255, 135/255)
+            Button:
+                id:bb
+                size_hint: None, None
+                width: "80dp"
+                height: "30dp"
+                opacity: 0.7
+                on_press: root.on_bb_click()
+                background_color: (116/255, 165/255, 127/255)
+            Button:
+                id:bbb
+                size_hint: None, None
+                width: "80dp"
+                height: "30dp"
+                opacity: 0.7
+                background_color: (38/255, 245/255, 177/255, 1)
+                on_press: root.on_bb_click()
 
 
         Label:

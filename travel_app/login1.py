@@ -1,3 +1,4 @@
+from future.builtins import disabled
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
@@ -15,7 +16,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 import webbrowser
-# logo
+from kivy.uix.stacklayout import StackLayout
 
 # nav bar
 
@@ -140,6 +141,15 @@ class Home(Screen):
     def on_buton4_click(self):
         webbrowser.open('https://www.whisperwanderlust.com/ro/')
 
+    def on_b_click(self):
+        webbrowser.open('https://aventurescu.ro/weekend-prelungit-in-salonic-97-euro-zbor-cazare-3-nopti/')
+
+    def on_bb_click(self):
+        webbrowser.open('https://aventurescu.ro/vacanta-in-sardinia-107-euro-zbor-cazare-3-nopti/')
+
+    def on_b_click(self):
+        webbrowser.open('https://aventurescu.ro/city-break-de-3-zile-in-milano-75-euro-zbor-cazare/')
+
 
 
 # clasa pentru a da switch intre ferestre
@@ -202,7 +212,6 @@ sm.add_widget(LogdataUI(name='logdata'))
 sm.add_widget(Forum(name='forum'))
 sm.add_widget(Home(name='home'))
 sm.add_widget(Filtre(name='filtre'))
-
 # clasa pentru gui
 class loginMain(App):
     def build(self):
