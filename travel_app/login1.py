@@ -14,7 +14,7 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.image import Image
 from kivy.uix.button import Button
-
+import webbrowser
 # logo
 
 # nav bar
@@ -127,6 +127,18 @@ class Home(Screen):
 
     def on_filtre_click(self):
         sm.current = 'filtre'
+
+    def go_to_register(self):
+        sm.current = 'register'
+
+    def on_buton1_click(self):
+        webbrowser.open('https://travelzoom.ro/')
+    def on_buton2_click(self):
+        webbrowser.open('https://aventurescu.ro/')
+    def on_buton3_click(self):
+        webbrowser.open('https://lipa-lipa.ro/')
+    def on_buton4_click(self):
+        webbrowser.open('https://www.whisperwanderlust.com/ro/')
 
 
 

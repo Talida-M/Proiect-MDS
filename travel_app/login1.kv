@@ -756,50 +756,33 @@ windowManager:
             italic: True
 
 
-        Label:
-            text: "Travel Zoom: https://travelzoom.ro/\nTravel Minit:https://blog.travelminit.ro/"
-            text_size: self.size
-            halign: 'center'
-            valign: 'middle'
-
-            size_hint: None, None
-            width: "250dp"
-            height: "50dp"
-            font_size: "14dp"
+        Button:
+            text: 'Travel Zoom'
+            size_hint: (0.6, 0.25)
             pos_hint: {"center_x": 0.5}
-            color: 7/255, 113/255, 135/255
-
-            background_color: (158/255, 206/255, 154/255, 1)
-            canvas.before:
-                Color:
-                    rgba: self.background_color
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
-            bold: True
-            italic: True
-        Label:
-            text: "Aventurescu: https://aventurescu.ro/\nLipa Lipa: https://lipa-lipa.ro/"
-            text_size: self.size
-            halign: 'center'
-            valign: 'middle'
-
-            size_hint: None, None
-            width: "250dp"
-            height: "50dp"
-            font_size: "14dp"
+            background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+            on_press: root.on_buton1_click()
+        Button:
+            text: 'Aventurescu'
+            size_hint: (0.6, 0.25)
             pos_hint: {"center_x": 0.5}
-            color: 7/255, 113/255, 135/255
+            background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+            on_press: root.on_buton2_click()
 
-            background_color: (158/255, 206/255, 154/255, 1)
-            canvas.before:
-                Color:
-                    rgba: self.background_color
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
-            bold: True
-            italic: True
+        Button:
+            text: 'Lipa Lipa'
+            size_hint: (0.6, 0.25)
+            pos_hint: {"center_x": 0.5}
+            background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+            on_press: root.on_buton3_click()
+
+        Button:
+            text: 'Whisper WanderLust'
+            size_hint: (0.6, 0.25)
+            pos_hint: {"center_x": 0.5}
+            background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+            on_press: root.on_buton4_click()
+
 
 
         Label:
