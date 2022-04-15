@@ -35,7 +35,7 @@ class LoginUI(Screen):
         elif self.email.text not in users['Email'].unique():
             popup = Popup(title='Log In Error', content=Label(text='No user found!'), size_hint=(None, None), size=(400, 400))
             popup.open()
-        else:
+        elif self.email.text  in users['Email'].unique():
             # trecem la fereastra contului
             sm.current = 'logdata'
   
