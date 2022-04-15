@@ -49,6 +49,10 @@ class LoginUI(Screen):
         sm.current = 'forum'
     def on_signout_click(self):
         sm.current = 'login'
+    def on_home_click(self):
+        sm.current = 'home'
+
+
 
 class Forum(Screen):
     def afisare_recenzie(self, rec, oras, label_afis_rec):
@@ -82,31 +86,7 @@ class Forum(Screen):
         sm.current = 'home'
 
 
-class Home(Screen):
-    def afisare_recenzie(self, rec, oras, label_afis_rec):
-        if oras != "" and rec != "":
-            rec_oras = pd.DataFrame([[oras, rec]], columns=['Oras', 'Recenzie'])
-            rec_oras.to_csv('rec_orase.csv', mode='a', header=False, index=False)
-
-            orase_recenzii = pd.read_csv('travel_app/rec_orase.csv')
-            orase = orase_recenzii['Oras']
-            recenzii = orase_recenzii['Recenzie']
-
-            # afisare
-            afisare_recenzii = ""
-            for i in range(len(recenzii)):
-                utilizator = "Anonim"
-                recenzie = "\nRecenzie pentru orasul " + orase[i] + "\n de la utilizatorul " + utilizator + "\n" + \
-                           recenzii[i] + "\n"
-
-                afisare_recenzii += recenzie
-                label_afis_rec.text = afisare_recenzii
-
-        else:
-            popup = Popup(title='Review Error', content=Label(text='No review submitted'), size_hint=(None, None),
-                          size=(400, 400))
-            popup.open()
-
+class Filtre(Screen):
     def on_signout_click(self):
         sm.current = 'login'
 
@@ -114,7 +94,39 @@ class Home(Screen):
         sm.current = 'forum'
     def on_home_click(self):
         sm.current = 'home'
+    def afisare_zbor(self, oras, destinatie, plecare, sosire, buget, zbor_afisat):
+        if oras != "" and destinatie != "" and  plecare != "" and sosire != "" and buget != "":
+            istoric = pd.DataFrame([[oras, destinatie, plecare, sosire, buget]], columns=['Plecare Din', 'Destinatie',
+                                                                                          'De cand', 'Pana cand', 'Buget'])
+            istoric.to_csv('istoric.csv', mode='a', header=False, index=False)
 
+            # istoric_zbor = pd.read_csv('istoric.csv')
+            # orase = istoric_zbor['Plecare Din']
+            # destinatii = istoric_zbor['Destinatie']
+            # sosiri = istoric_zbor['De cand']
+            # plecari = istoric_zbor['Pana cand']
+            # bugete = istoric_zbor['Buget']
+    def cazare_afisata(self, orasC, cazare, out, bug, cazari_afisate):
+        if orasC != "" and cazare != "" and  out != "" and bug != "" :
+            istoric = pd.DataFrame([[orasC, cazare, out, bug]], columns=['Oras', 'Check In', 'Check Out', 'Buget'])
+            istoric.to_csv('istoricCazari.csv', mode='a', header=False, index=False)
+
+
+
+
+class Home(Screen):
+
+    def on_signout_click(self):
+        sm.current = 'login'
+
+    def on_forum_click(self):
+        sm.current = 'forum'
+
+    def on_home_click(self):
+        sm.current = 'home'
+
+    def on_filtre_click(self):
+        sm.current = 'filtre'
 
 
 
@@ -177,6 +189,8 @@ sm.add_widget(RegisterUI(name='register'))
 sm.add_widget(LogdataUI(name='logdata'))
 sm.add_widget(Forum(name='forum'))
 sm.add_widget(Home(name='home'))
+sm.add_widget(Filtre(name='filtre'))
+
 # clasa pentru gui
 class loginMain(App):
     def build(self):
