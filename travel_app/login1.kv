@@ -5,11 +5,45 @@ windowManager:
     Forum:
 
 <Forum>:
+    canvas.before:
+        Rectangle:
+            source:'logo.png'
+            size: root.width, root.height
+            pos: self.pos
+
     BoxLayout:
         orientation: "vertical"
         spacing: "15dp"
+        padding: [50, 50, 50, 50]
         Image:
             source: "logo1.png"
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                text: "Home"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                # on_press: root.on_home_click()
+            Button:
+                text: "Log In"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_signout_click()
+            Button:
+                text: "Forum"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_forum_click()
+            Button:
+                text: "My Profile"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                # on_press: root.on_myprofile_click()
+
         Label:
             text: "Forum"
             text_size: self.size
@@ -31,33 +65,6 @@ windowManager:
                 Rectangle:
                     size: self.size
                     pos: self.pos
-
-        BoxLayout:
-            orientation: "horizontal"
-            Button:
-                text: "Home"
-                size_hint: (0.5, 0.25)
-                pos_hint:{'x': .5, 'y': .5}
-                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
-                on_press: root.on_home_click()
-            Button:
-                text: "Log In"
-                size_hint: (0.5, 0.25)
-                pos_hint:{'x': .5, 'y': .5}
-                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
-                on_press: root.on_signout_click()
-            Button:
-                text: "Forum"
-                size_hint: (0.5, 0.25)
-                pos_hint:{'x': .5, 'y': .5}
-                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
-                on_press: root.on_forum_click()
-            Button:
-                text: "My Profile"
-                size_hint: (0.5, 0.25)
-                pos_hint:{'x': .5, 'y': .5}
-                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
-                on_press: root.on_myprofile_click()
         
         TextInput:
             hint_text: "Orasul tau..."
@@ -97,6 +104,9 @@ windowManager:
         Widget:
 
 <LoginUI>:
+    email: email
+    pwd: pwd
+
     canvas.before:
         Rectangle:
             source:'logo.png'
@@ -130,7 +140,7 @@ windowManager:
                 size_hint: (0.5, 0.25)
                 pos_hint:{'x': .5, 'y': .5}
                 background_color: (7 / 255, 113 / 255, 135 / 255, 1)
-                on_press: root.on_home_click()
+                # on_press: root.on_home_click()
             Button:
                 text: "Log In"
                 size_hint: (0.5, 0.25)
@@ -148,7 +158,7 @@ windowManager:
                 size_hint: (0.5, 0.25)
                 pos_hint:{'x': .5, 'y': .5}
                 background_color: (7 / 255, 113 / 255, 135 / 255, 1)
-                on_press: root.on_myprofile_click()
+                # on_press: root.on_myprofile_click()
 
         Label:
             text: "Log In"
@@ -201,13 +211,13 @@ windowManager:
             on_press: root.on_login_click()
             background_color: (158/255, 206/255, 154/255, 1)
         
-        Button:
-            text: "buton"
-            size_hint: None, None
-            width: "150dp"
-            height: "30dp"
-            pos_hint: {"center_x": 0.5}
-            on_press: root.go_to_menu()
+        # Button:
+        #     text: "buton"
+        #     size_hint: None, None
+        #     width: "150dp"
+        #     height: "30dp"
+        #     pos_hint: {"center_x": 0.5}
+        #     on_press: root.go_to_menu()
         
         # Label:
         #     text: "Not an user yet?"
@@ -317,39 +327,93 @@ windowManager:
     email: email
     pwd: pwd
 
+    canvas.before:
+        Rectangle:
+            source:'logo.png'
+            size: root.width, root.height
+            pos: self.pos
+
     BoxLayout:
         orientation: "vertical"
         spacing: "15dp"
         padding: [50, 50, 50, 50]
 
         Image:
-            source: "travel_app/domy.png"
-            size_hint: None, None
-            width: "50dp"
-            height: "50dp"
-            pos_hint: {"center_x": 0.5}
+            source: "logo1.png"
+            # size_hint: None, None
+            # width: "50dp"
+            # height: "50dp"
+            # pos_hint: {"center_x": 0.5}
+        
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                text: "Home"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                # on_press: root.on_home_click()
+            Button:
+                text: "Log In"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_signout_click()
+            Button:
+                text: "Forum"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_forum_click()
+            Button:
+                text: "My Profile"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                # on_press: root.on_myprofile_click()
         
         Label:
             text: "Create a new account"
-
             text_size: self.size
             halign: 'center'
             valign: 'middle'
 
             font_size: "20dp"
             size_hint: None, None
-            width: "300dp"
+            width: "250dp"
             height: "50dp"
-            font_size: "30dp"
+
             pos_hint: {"center_x": 0.5}
+            color: 7/255, 113/255, 135/255
             
-            background_color: (7/255, 113/255, 135/255, 1)
+            background_color: (158/255, 206/255, 154/255, 1)
             canvas.before:
                 Color:
                     rgba: self.background_color
                 Rectangle:
                     size: self.size
                     pos: self.pos
+
+            # text: "Create a new account"
+
+            # text_size: self.size
+            # halign: 'center'
+            # valign: 'middle'
+
+            # font_size: "20dp"
+            # size_hint: None, None
+            # width: "300dp"
+            # height: "50dp"
+            # font_size: "30dp"
+            # pos_hint: {"center_x": 0.5}
+            
+            # background_color: (7/255, 113/255, 135/255, 1)
+            # canvas.before:
+            #     Color:
+            #         rgba: self.background_color
+            #     Rectangle:
+            #         size: self.size
+            #         pos: self.pos
 
         TextInput:
             hint_text: "Username"
@@ -427,5 +491,3 @@ windowManager:
     #     text: "Log In"
     # Button:
     #     text: "Don't have an account? Sign up"
-
-        
