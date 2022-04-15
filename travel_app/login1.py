@@ -54,7 +54,7 @@ class Forum(Screen):
     def afisare_recenzie(self, rec, oras, label_afis_rec):
         if oras != "" and rec != "":
             rec_oras = pd.DataFrame([[oras, rec]], columns = ['Oras', 'Recenzie'])
-            rec_oras.to_csv('travel_app/rec_orase.csv', mode = 'a', header = False, index = False)
+            rec_oras.to_csv('rec_orase.csv', mode = 'a', header = False, index = False)
 
             orase_recenzii = pd.read_csv('travel_app/rec_orase.csv')
             orase = orase_recenzii['Oras']
@@ -78,6 +78,44 @@ class Forum(Screen):
     
     def on_forum_click(self):
         sm.current = 'forum'
+    def on_home_click(self):
+        sm.current = 'home'
+
+
+class Home(Screen):
+    def afisare_recenzie(self, rec, oras, label_afis_rec):
+        if oras != "" and rec != "":
+            rec_oras = pd.DataFrame([[oras, rec]], columns=['Oras', 'Recenzie'])
+            rec_oras.to_csv('rec_orase.csv', mode='a', header=False, index=False)
+
+            orase_recenzii = pd.read_csv('travel_app/rec_orase.csv')
+            orase = orase_recenzii['Oras']
+            recenzii = orase_recenzii['Recenzie']
+
+            # afisare
+            afisare_recenzii = ""
+            for i in range(len(recenzii)):
+                utilizator = "Anonim"
+                recenzie = "\nRecenzie pentru orasul " + orase[i] + "\n de la utilizatorul " + utilizator + "\n" + \
+                           recenzii[i] + "\n"
+
+                afisare_recenzii += recenzie
+                label_afis_rec.text = afisare_recenzii
+
+        else:
+            popup = Popup(title='Review Error', content=Label(text='No review submitted'), size_hint=(None, None),
+                          size=(400, 400))
+            popup.open()
+
+    def on_signout_click(self):
+        sm.current = 'login'
+
+    def on_forum_click(self):
+        sm.current = 'forum'
+    def on_home_click(self):
+        sm.current = 'home'
+
+
 
 
 # clasa pentru a da switch intre ferestre
@@ -102,7 +140,7 @@ class RegisterUI(Screen):
         if self.email.text != "":
             if self.email.text not in users['Email'].unique():
                 # daca email-ul nu exista deja in baza de date, adaugam noul user, si trecem la fereastra de log in
-                user.to_csv('travel_app/login.csv', mode = 'a', header = False, index = False)
+                user.to_csv('login.csv', mode = 'a', header = False, index = False)
                 sm.current = 'login'
 
                 # resetam campurile
@@ -119,16 +157,18 @@ class RegisterUI(Screen):
     
     def on_signout_click(self):
         sm.current = 'login'
+    def on_home_click(self):
+        sm.current = 'home'
     
     def on_forum_click(self):
         popup = Popup(title='Not an user', content=Label(text='Please log in to access the forum!'), size_hint=(None, None), size=(500, 500))
         popup.open()
 
-kv = Builder.load_file('travel_app/login1.kv')
+kv = Builder.load_file('login1.kv')
 sm = windowManager()
 
 # stocam userii
-users = pd.read_csv('travel_app/login.csv')
+users = pd.read_csv('login.csv')
 # print(users.keys())
   
 # adaugam ecranele
@@ -136,7 +176,7 @@ sm.add_widget(LoginUI(name='login'))
 sm.add_widget(RegisterUI(name='register'))
 sm.add_widget(LogdataUI(name='logdata'))
 sm.add_widget(Forum(name='forum'))
-
+sm.add_widget(Home(name='home'))
 # clasa pentru gui
 class loginMain(App):
     def build(self):

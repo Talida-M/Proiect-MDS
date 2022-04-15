@@ -35,6 +35,18 @@ Screen:
                         background_color: (113 / 255, 165 / 255, 127 / 255, 1)
                         left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
                         elevation:5
+                    BoxLayout:    
+                        Button:
+                            text:"Login"
+                            size_hint:(0.5,0.2)
+                            pos_hint:{'x': 1.0, 'y': 0.7}
+                            background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                            
+                        Button:
+                            text:"Register"
+                            size_hint:(0.5,0.2)
+                            pos_hint:{'x': 1.0, 'y': 0.7}
+                            background_color: (7 / 255, 113 / 255, 135 / 255, 1)
                     Label:
                         text: "Alege cum vrei sa calatoresti:"
                         font_size: 14
@@ -52,36 +64,115 @@ Screen:
                         outline_color: (1,1,1)
                         outline_width: 10
                     TextInput:
-                        text: "Din"
-                        size_hint:(0.7, 0.3)
-                        background_color: (228/255, 197/255, 175/255, 1)
-                        pos_hint:{'x': .15, 'y': .15}
+                        hint_text: "Plecare Din"
+                        id: plecare
+                        multiline: False
+                        size_hint: None, None
+                        width: "200dp"
+                        height: "25dp"
+                        pos_hint: {"center_x": 0.5}
+                        background_color: (228 / 255, 197 / 255, 175 / 255, 1)
+                        
                     TextInput:
-                        text: "Spre"
-                        size_hint:(0.7, 0.3)
-                        background_color: (228/255, 197/255, 175/255, 1)
-                        pos_hint:{'x': .15, 'y': .15}
+                        hint_text: "Locatie"
+                        id: locatie
+                        multiline: False
+                        size_hint: None, None
+                        width: "200dp"
+                        height: "25dp"
+                        pos_hint: {"center_x": 0.5}
+                        background_color: (228 / 255, 197 / 255, 175 / 255, 1)
                     TextInput:
-                        text: "Data Plecare"
-                        size_hint:(0.7, 0.3)
-                        background_color: (228/255, 197/255, 175/255, 1)
-                        pos_hint:{'x': .15, 'y': .15}
+                        hint_text: "Data Plecare"
+                        id: data1
+                        multiline: False
+                        size_hint: None, None
+                        width: "200dp"
+                        height: "25dp"
+                        pos_hint: {"center_x": 0.5}
+                        background_color: (228 / 255, 197 / 255, 175 / 255, 1)
                     TextInput:
-                        text: "Data Sosire"
-                        size_hint:(0.7, 0.3)
-                        background_color: (228/255, 197/255, 175/255, 1)
-                        pos_hint:{'x': .15, 'y': .15}
+                        hint_text: "Data Sosire"
+                        id: data2
+                        multiline: False
+                        size_hint: None, None
+                        width: "200dp"
+                        height: "25dp"
+                        pos_hint: {"center_x": 0.5}
+                        background_color: (228 / 255, 197 / 255, 175 / 255, 1)
                     TextInput:
-                        text: "Buget"
-                        size_hint:(0.7, 0.3)
-                        background_color: (228/255, 197/255, 175/255, 1)
-                        pos_hint:{'x': .15, 'y': .15}
+                        hint_text: "Buget"
+                        id: buget
+                        multiline: False
+                        size_hint: None, None
+                        width: "200dp"
+                        height: "25dp"
+                        pos_hint: {"center_x": 0.5}
+                        background_color: (228 / 255, 197 / 255, 175 / 255, 1)
                     Button:
                         text:"Filtreaza !"
                         size_hint:(0.7,0.2)
                         pos_hint:{'x': .15, 'y': .15}
+                        background_color: (7 / 255, 113 / 255, 135 / 255)
+                    ScrollView:    
+                        Label:
+                            text: "Ajuta-ne sa iti gasim cazarea perfecta:"
+                            font_size: 14
+                            color: (7/255, 79/255, 87/255)
+                            background_color: (1, 1, 1,1)
+                            halign: 'left'
+                            allow_stretch: True
+                            keep_ratio: True
+                            canvas.before:
+                                Color:
+                                    rgba: self.background_color
+                            pos_hint:{'x': .04, 'y': 0.7}
+                            bold: True
+                            italic: True
+                            outline_color: (1,1,1)
+                            outline_width: 10    
+                    TextInput:
+                        hint_text: "Oras"
+                        id: oras
+                        multiline: False
+                        size_hint: None, None
+                        width: "200dp"
+                        height: "25dp"
+                        pos_hint: {"center_x": 0.5}
+                        background_color: (228 / 255, 197 / 255, 175 / 255, 1)
+                    TextInput:
+                        hint_text: "Data Cazare"
+                        id: dataC
+                        multiline: False
+                        size_hint: None, None
+                        width: "200dp"
+                        height: "25dp"
+                        pos_hint: {"center_x": 0.5}
+                        background_color: (228 / 255, 197 / 255, 175 / 255, 1)
+                    TextInput:
+                        hint_text: "Data Plecare"
+                        id: dataP
+                        multiline: False
+                        size_hint: None, None
+                        width: "200dp"
+                        height: "25dp"
+                        pos_hint: {"center_x": 0.5}
+                        background_color: (228 / 255, 197 / 255, 175 / 255, 1)
+                    TextInput:
+                        hint_text: "Buget"
+                        id: buget
+                        multiline: False
+                        size_hint: None, None
+                        width: "200dp"
+                        height: "25dp"
+                        pos_hint: {"center_x": 0.5}
+                        background_color: (228 / 255, 197 / 255, 175 / 255, 1)
+                    Button:
+                        text:"Cauta Cazare !"
+                        size_hint:(0.7,0.2)
+                        pos_hint:{'x': .15, 'y': .15}
                         background_color: (7 / 255, 113 / 255, 135 / 255, 1)
-                    BoxLayout:
+                    ScrollView:
                         Label:
                             text: "Inspiratii pentru vacanta:"
                             font_size: 18
@@ -108,7 +199,7 @@ Screen:
                         size_hint:(0.4, 0.3)
                         padding_y: 10
                         valign: 'center'
-                        pos_hint:{'x': 0.23, 'y': .10}
+                        pos_hint:{'x': 0.4, 'y': .10}
                         allow_stretch: True
                         keep_ratio: True
                         canvas.before:
@@ -128,7 +219,7 @@ Screen:
                         size_hint:(0.4, 0.3)
                         padding_y: 10
                         valign: 'center'
-                        pos_hint:{'x': 0.25, 'y': .10}
+                        pos_hint:{'x': 0.5, 'y': .10}
                         allow_stretch: True
                         keep_ratio: True
                         canvas.before:
@@ -147,7 +238,7 @@ Screen:
                         size_hint:(0.4, 0.3)
                         padding_y: 10
                         valign: 'center'
-                        pos_hint:{'x': 0.25, 'y': .10}
+                        pos_hint:{'x': 0.6, 'y': .1}
                         allow_stretch: True
                         keep_ratio: True
                         canvas.before:
@@ -229,42 +320,7 @@ Screen:
 """
 Window.clearcolor = (0.92, 0.76, 0.63)
 class Background(BoxLayout):
-    def build(self):
-        _long_text = """Călătorii! Fie că-ți vizitezi  familia  în mediul rural, fie că zbori 
-
-                în  Grecia, poți avea parte de aventuri oriunde în lume!
-
-               Călătoriile au  atât de multe beneficii, inclusiv îmbunătățirea
-
-               unei limbi noi, învățarea istoriei locului și a  diverselor
-
-                informații, dar cel mai important este crearea unor  amintiri de
-
-               neuitat, care pot fi împărtășite cu prietenii, familia sau copiii 
-
-               în viitor. Tocmai de aceea, va recomandam 10 blogg-uri de calatorie
-
-               care va vor inspira in alegerea unei locatii:
-               https://aventurescu.ro/
-
-               https://www.imperatortravel.ro/
-
-               https://lipa-lipa.ro/
-
-               https://dailytravelpill.com/
-
-               https://designedtotravel.ro/
-
-               https://consilierturism.ro/
-
-               https://travelista.ro/
-
-               https://travelzoom.ro/
-
-               https://www.whisperwanderlust.com/ro/
-
-               https://blog.travelminit.ro/"""
-        return RstDocument(text=_long_text)
+    pass
 
 
 

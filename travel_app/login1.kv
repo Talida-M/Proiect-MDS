@@ -24,7 +24,7 @@ windowManager:
                 size_hint: (0.5, 0.25)
                 pos_hint:{'x': .5, 'y': .5}
                 background_color: (7 / 255, 113 / 255, 135 / 255, 1)
-                # on_press: root.on_home_click()
+                on_press: root.on_home_click()
             Button:
                 text: "Log In"
                 size_hint: (0.5, 0.25)
@@ -119,7 +119,7 @@ windowManager:
         padding: [50, 50, 50, 50]
 
         Image:
-            source: "travel_app/logo1.png"
+            source: "logo1.png"
             # size_hint: None, None
             # width: "50dp"
             # height: "50dp"
@@ -491,3 +491,209 @@ windowManager:
     #     text: "Log In"
     # Button:
     #     text: "Don't have an account? Sign up"
+
+################################
+<Home>:
+    canvas.before:
+        Rectangle:
+            source:'logo.png'
+            size: root.width, root.height
+            pos: self.pos
+
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "15dp"
+        padding: [50, 50, 50, 50]
+        Image:
+            source: "logo1.png"
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                text: "Home"
+                size_hint: (0.3, 0.2)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_home_click()
+            Button:
+                text: "Log In"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_signout_click()
+            Button:
+                text: "Forum"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                on_press: root.on_forum_click()
+            Button:
+                text: "My Profile"
+                size_hint: (0.5, 0.25)
+                pos_hint:{'x': .5, 'y': .5}
+                background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                # on_press: root.on_myprofile_click()
+
+        Label:
+            text: "Home"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+
+            font_size: "20dp"
+            size_hint: None, None
+            width: "250dp"
+            height: "50dp"
+            font_size: "30dp"
+            pos_hint: {"center_x": 0.5}
+            color: 7/255, 113/255, 135/255
+
+            background_color: (158/255, 206/255, 154/255, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+        Label:
+            text: "Alege cum vrei sa calatoresti:"
+            font_size: 14
+            color: (7/255, 79/255, 87/255)
+            background_color: (1, 1, 1,1)
+            halign: 'left'
+            allow_stretch: True
+            keep_ratio: True
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+            pos_hint:{'x': .02, 'y': 0.5}
+            bold: True
+            italic: True
+            outline_color: (1,1,1)
+            outline_width: 10
+        TextInput:
+            hint_text: "Plecare Din"
+            id: oras
+            multiline: False
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+            background_color: (228/255, 197/255, 175/255, 1)
+            color: (113 / 255, 165 / 255, 127 / 255, 1)
+
+        TextInput:
+            hint_text: "Destinatie"
+            id: recenzie
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+            background_color: (228/255, 197/255, 175/255, 1)
+            color: (113 / 255, 165 / 255, 127 / 255, 1)
+        TextInput:
+            hint_text: "Data Plecare"
+            id: recenzie
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+            background_color: (228/255, 197/255, 175/255, 1)
+            color: (113 / 255, 165 / 255, 127 / 255, 1)
+        TextInput:
+            hint_text: "Data Sosire"
+            id: recenzie
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+            background_color: (228/255, 197/255, 175/255, 1)
+            color: (113 / 255, 165 / 255, 127 / 255, 1)
+        TextInput:
+            hint_text: "Buget"
+            id: recenzie
+            size_hint: None, None
+            width: "250dp"
+            height: "25dp"
+            pos_hint: {"center_x": 0.5}
+            background_color: (228/255, 197/255, 175/255, 1)
+            color: (113 / 255, 165 / 255, 127 / 255, 1)
+        Button:
+            text: "Filtreaza!"
+            size_hint: None, None
+            width: "150dp"
+            height: "30dp"
+            pos_hint: {"center_x": 0.5}
+            background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+            on_press: root.afisare_recenzie(recenzie.text, oras.text, recenzii_afisate)
+        ScrollView:
+            do_scroll_x: True
+            do_scroll_y: True
+            BoxLayout:
+                Label:
+                    text: "Ajuta-ne sa iti gasim cazarea perfecta:"
+                    font_size: 14
+                    color: (7/255, 79/255, 87/255)
+                    background_color: (1, 1, 1,1)
+                    halign: 'left'
+                    allow_stretch: True
+                    keep_ratio: True
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                    pos_hint:{'x': .02, 'y': 0.5}
+                    bold: True
+                    italic: True
+                    outline_color: (1,1,1)
+                    outline_width: 10
+                TextInput:
+                    hint_text: "Oras"
+                    id: oras
+                    multiline: False
+                    size_hint: None, None
+                    width: "250dp"
+                    height: "25dp"
+                    pos_hint: {"center_x": 0.5}
+                    background_color: (228/255, 197/255, 175/255, 1)
+                    color: (113 / 255, 165 / 255, 127 / 255, 1)
+                TextInput:
+                    hint_text: "Data Cazare"
+                    id: recenzie
+                    size_hint: None, None
+                    width: "250dp"
+                    height: "25dp"
+                    pos_hint: {"center_x": 0.5}
+                    background_color: (228/255, 197/255, 175/255, 1)
+                    color: (113 / 255, 165 / 255, 127 / 255, 1)
+                TextInput:
+                    hint_text: "Data Plecare"
+                    id: recenzie
+                    size_hint: None, None
+                    width: "250dp"
+                    height: "25dp"
+                    pos_hint: {"center_x": 0.5}
+                    background_color: (228/255, 197/255, 175/255, 1)
+                    color: (113 / 255, 165 / 255, 127 / 255, 1)
+                TextInput:
+                    hint_text: "Buget"
+                    id: recenzie
+                    size_hint: None, None
+                    width: "250dp"
+                    height: "25dp"
+                    pos_hint: {"center_x": 0.5}
+                    background_color: (228/255, 197/255, 175/255, 1)
+                    color: (113 / 255, 165 / 255, 127 / 255, 1)
+                Button:
+                    text: "Cauta Cazare !!"
+                    size_hint: None, None
+                    width: "150dp"
+                    height: "30dp"
+                    pos_hint: {"center_x": 0.5}
+                    background_color: (7 / 255, 113 / 255, 135 / 255, 1)
+                    on_press: root.afisare_recenzie(recenzie.text, oras.text, recenzii_afisate)
+
+                Label:
+                    text: ""
+                    id: recenzii_afisate
+                    color: (113 / 255, 165 / 255, 127 / 255, 1)
+
+                Widget:
