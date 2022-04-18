@@ -282,12 +282,12 @@ class Profile(Screen):
     def show_user_info(self,label_afis_user_info):
         user_info=pd.read_csv('user.csv')
         email = user_info['Email']
-        print(email[1],type(email[1]))
-        get_user_info=email
+        print(email[1],type(email[1]),email[len(email)-1])
 
-        label_afis_user_info.text=get_user_info[1]
 
-        return get_user_info[1]
+        label_afis_user_info.text=email[len(email)-1]
+
+        return email[len(email)-1]
 
     def show_istoric_cautari(self,label_afis_istoric):
         current_user=self.show_user_info(label_afis_istoric)
