@@ -291,7 +291,7 @@ class Profile(Screen):
 
     def show_istoric_cautari(self,label_afis_istoric):
         current_user=self.show_user_info(label_afis_istoric)
-        istoric_user = pd.read_csv('istoric_user.csv')
+        istoric_user = pd.read_csv('istoric.csv')
 
         email = istoric_user['Email']
         oras_s = istoric_user['Oras_Sursa']
@@ -308,7 +308,7 @@ class Profile(Screen):
                 get_istoric += line
 
         label_afis_istoric.text = get_istoric
-        os.remove('user.csv')
+        # os.remove('user.csv')
 
 
     def on_myprofile_click(self):
