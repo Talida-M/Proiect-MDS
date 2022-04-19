@@ -143,7 +143,8 @@ class RegisterUI(Screen):
                             columns=['Username', 'Email', 'Password'])
 
         if self.email.text != "":
-            if self.email.text not in users['Email'].unique():
+            # if self.email.text not in users['Email'].unique():
+            if self.email.text not in users['Email']:
                 # daca email-ul nu exista deja in baza de date, adaugam noul user, si trecem la fereastra de log in
                 user.to_csv('login.csv', mode='a', header=False, index=False)
                 sm.current = 'login'
